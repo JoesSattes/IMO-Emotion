@@ -1,4 +1,5 @@
-# IMO-Emotion verson
+# IMO-Emotion version
+This repository revised and reproduced the version of the IMO paper, which focuses on sentiment analysis tasks.
 
 ## Table of Contents
 - [Setup](#installation)
