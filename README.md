@@ -5,12 +5,9 @@
 - [Usage](#usage)
 
 ## Setup
-We use conda to manage python packages.
-```bash
-git clone https://github.com/yourusername/IMO.git
-cd IMO
-conda env create -n IMO --file environment.yml
-conda activate IMO
+Install Dependency:
+```
+pip install datasets transformers evaluate
 ```
 
 ## Usage
