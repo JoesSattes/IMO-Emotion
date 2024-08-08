@@ -725,14 +725,14 @@ def main():
                            precision_score(y_true=all_references, y_pred=all_predictions),
                            recall_score(y_true=all_references, y_pred=all_predictions),
                            f1_score(y_true=all_references, y_pred=all_predictions)]
-        logger.info(f"evaluation result: {eval_metric}")
+        logger.info(f"{args.model_class} tuning after {args.hidden_state_layer} hdsl | evaluation result => Number label: {num_labels}, Accuracy: {eval_metric[0]}, Precision: {eval_metric[1]}, Recall: {eval_metric[2]}, F1_score: {eval_metric[3]}")
         if hasattr(outputs, 'disentangle_mask'):
             if outputs.disentangle_mask is not None:
                 logger.info(f"zero ratio in mask layer: {zero_ratio}")
         # save prediction result
         if args.prediction_result_file is not None:
             df = pd.DataFrame({'text': all_inputs, 'reference': all_references, 'predictions': all_predictions})
-            df.to_csv(args.prediction_result_file, index=False)
+            df.to_csv(args.prediction_result_file, index=False, encoding='utf8')
         else:
             logger.info("please provide a prediction_result_file to save prediction result")
     else:
