@@ -15,8 +15,11 @@ pip install datasets transformers evaluate
 ### Training and Evaluate Models
 Run the following command to start the training process:
 ```bash
-# train a model on TweetEval dataset
-sbatch submit_job_example.sh
+# train on IMDB
+python run_text_disentangled_classification.py --train_file dataset/sentiment/original_imdb/tc_train.csv --validation_file dataset/sentiment/original_imdb/tc_valid.csv --model_name_or_path google-bert/bert-base-multilingual-cased  --output_dir checkpoints/mbart_imdb --model_class BertForTokenAttentionSparseCLSJoint_incremental --num_train_epochs 1 --hidden_state_layer 8 --seed 415
+
+# train on Tweet
+python run_text_disentangled_classification.py --train_file dataset/sentiment/TweetEval_sentiment/train/tc_train.csv --validation_file dataset/sentiment/TweetEval_sentiment/valid/tc_valid.csv --model_name_or_path google-bert/bert-base-multilingual-cased  --output_dir checkpoints/mbart_tweet --model_class BertForTokenAttentionSparseCLSJoint_incremental --num_train_epochs 5 --hidden_state_layer 8 --seed 415
 ```
 
 ```bash
