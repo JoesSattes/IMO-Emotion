@@ -21,7 +21,7 @@ sbatch submit_job_example.sh
 
 ```bash
 # evaluate model on IMDB dataset
-!python run_text_disentangled_classification.py --train_file dataset/sentiment/original_imdb/test.csv --validation_file dataset/sentiment/original_imdb/test.csv --model_name_or_path google-bert/bert-base-multilingual-cased  --output_dir checkpoints/out/ --model_class BertForTokenAttentionSparseCLSJoint_incremental --only_evaluation
+python run_text_disentangled_classification.py --train_file dataset/sentiment/original_imdb/test.csv --validation_file dataset/sentiment/original_imdb/test.csv --model_name_or_path google-bert/bert-base-multilingual-cased  --output_dir checkpoints/out/ --model_class BertForTokenAttentionSparseCLSJoint_incremental --hidden_state_layer 8 --only_evaluation
 ```
 
 
