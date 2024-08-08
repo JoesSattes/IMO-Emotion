@@ -2028,7 +2028,7 @@ class BertForTokenAttentionSparseCLSJoint_incremental(BertPreTrainedModel):
         labels: Optional[torch.LongTensor] = None,
         output_attentions: Optional[bool] = None,
         output_hidden_states: Optional[bool] = None,
-        hidden_state_layer: Optional[int] = 0, #24
+        hidden_state_layer: Optional[int] = 1, #24
         return_dict: Optional[bool] = None,
     ) -> Union[Tuple[torch.Tensor], DisentangledSequenceClassifierOutput]:
         r"""
@@ -2062,10 +2062,11 @@ class BertForTokenAttentionSparseCLSJoint_incremental(BertPreTrainedModel):
         print(hidden_state_layer, len(encoder_outputs["hidden_states"]), len(encoder_outputs["last_hidden_state"]))
 
         for cur_layer in range(hidden_state_layer, length_hs_layer): # 25
+            print(cur_layer)
             cur_layer_masked_embeddings, cur_layer_masked_weight = \
                 self.learnable_mask_layers[cur_layer-1](next_hidden_state)
             trained_mask_weights.append(cur_layer_masked_weight)
-            if cur_layer < 24:
+            if cur_layer < len(self.bert.encoder.layer)-1:
                 next_hidden_state = \
                 self.bert.encoder.layer[cur_layer](cur_layer_masked_embeddings, attention_mask, head_mask)[0]
             else:
