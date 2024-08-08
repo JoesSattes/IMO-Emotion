@@ -2058,11 +2058,11 @@ class BertForTokenAttentionSparseCLSJoint_incremental(BertPreTrainedModel):
         trained_mask_weights = []
 
         length_hs_layer = len(self.bert.encoder.layer) # 25
-        print(self.bert)
-        print(hidden_state_layer, len(encoder_outputs["hidden_states"]), len(encoder_outputs["last_hidden_state"]))
+        # print(self.bert)
+        # print(hidden_state_layer, len(encoder_outputs["hidden_states"]), len(encoder_outputs["last_hidden_state"]))
 
         for cur_layer in range(hidden_state_layer, length_hs_layer): # 25
-            print(cur_layer)
+            # print(cur_layer)
             cur_layer_masked_embeddings, cur_layer_masked_weight = \
                 self.learnable_mask_layers[cur_layer-1](next_hidden_state)
             trained_mask_weights.append(cur_layer_masked_weight)
