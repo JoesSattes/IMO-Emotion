@@ -57,6 +57,12 @@ M2M_100_PRETRAINED_MODEL_ARCHIVE_LIST = [
     # See all M2M100 models at https://huggingface.co/models?filter=m2m_100
 ]
 
+from dataclasses import dataclass
+from typing import Optional, Tuple
+import torch
+from transformers.file_utils import ModelOutput
+
+@dataclass
 class DisentangledSequenceClassifierOutput(ModelOutput):
     """
     Base class for outputs of sentence classification models.
